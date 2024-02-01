@@ -3,3 +3,126 @@
 @tailwind utilities;
 
 
+.layout {
+  background-color: rgba(250, 250, 250, 1);
+}
+
+@layer base {
+  h1 {
+    @apply my-3 text-lg lg:text-2xl font-semibold;
+  }
+
+  h2 {
+    @apply text-black text-[18px] mb-[10px] mt-[10px] capitalize;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:column-span-1 {
+    grid-column: span 1;
+  }
+
+  .md\:column-span-2 {
+    grid-column: span 2;
+  }
+
+  .md\:column-span-3 {
+    grid-column: span 3;
+  }
+
+  .md\:column-span-4 {
+    grid-column: span 4;
+  }
+
+  .md\:column-span-5 {
+    grid-column: span 5;
+  }
+
+  .md\:column-span-6 {
+    grid-column: span 6;
+  }
+
+  .md\:column-start-1 {
+    grid-column-start: 1;
+  }
+
+  .md\:column-start-2 {
+    grid-column-start: 2;
+  }
+
+  .md\:column-start-3 {
+    grid-column-start: 3;
+  }
+
+  .md\:column-start-4 {
+    grid-column-start: 4;
+  }
+
+  .md\:column-start-5 {
+    grid-column-start: 5;
+  }
+
+  .md\:column-start-6 {
+    grid-column-start: 6;
+  }
+
+  .md\:column-end-1 {
+    grid-column-end: 1;
+  }
+
+  .md\:column-end-2 {
+    grid-column-end: 2;
+  }
+
+  .md\:column-end-3 {
+    grid-column-end: 3;
+  }
+
+  .md\:column-end-4 {
+    grid-column-end: 4;
+  }
+
+  .md\:column-end-5 {
+    grid-column-end: 5;
+  }
+
+  .md\:column-end-6 {
+    grid-column-end: 6;
+  }
+}
+
+.ant-select-tree-title {
+  color: black;
+}
+
+.ant-tree-select-dropdown-menu-item:hover {
+  background-color: #e6f7ff;
+  color: #1890ff;
+}
+
+/* .ant-tabs-ink-bar {
+  border-bottom: 2px solid #FF5230;
+} */
+
+.ant-tabs-nav .ant-tabs-tab-active {
+  background-color: red;
+  /* Replace 'red' with your desired color */
+}
+
+.css-szdqjn-MuiDrawer-docked .MuiDrawer-paper {
+  border-color: white;
+}
+
+.datepicker-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  /* Semi-transparent white */
+  pointer-events: none;
+  /* Allow clicks to pass through */
+  z-index: 1;
+  /* Place overlay above the Datepicker */
+}

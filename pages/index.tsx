@@ -1,10 +1,12 @@
 import React from "react";
 import Layout from "@/components/Layout";
 import CustomTable from "@/components/CustomTable";
-import { Button, Dropdown, Menu, Select, Tag } from "antd";
+import CustomTab from "@/components/CustomTab";
+import { Button, Dropdown, Menu, Tag } from "antd";
 import { EllipsisOutlined, PlusCircleOutlined } from "@ant-design/icons";
 import { TableProps } from "antd/lib";
 import { ColumnsType } from "antd/es/table";
+import { HiOutlineDotsVertical } from "react-icons/hi";
 
 interface DataType {
   key: React.Key;
@@ -103,17 +105,18 @@ export default function Home() {
       sorter: (a, b) => a.oneTimePasscode.length - b.oneTimePasscode.length,
     },
     {
-      title: "Actions",
+      title: "",
       dataIndex: "key",
       render: (text, record: any) => {
         return (
-          <Button>
-            <Dropdown overlay={() => menu(record?.id)} trigger={["click"]}>
-              <Button size="small" type="link">
-                <EllipsisOutlined />
-              </Button>
-            </Dropdown>
-          </Button>
+          <Dropdown overlay={() => menu(record?.id)} trigger={["click"]}>
+            <Button
+              size="middle"
+              className="flex justify-center items-center gap-1"
+            >
+              <HiOutlineDotsVertical /> Options
+            </Button>
+          </Dropdown>
         );
       },
     },
@@ -129,7 +132,7 @@ export default function Home() {
       oneTimePasscode: "TGS^$%ttUW",
     },
     {
-      key: 1,
+      key: 2,
       status: "Expired",
       deviceType: "Apple iOS",
       deviceName: "spotlight-int-dev-01",
@@ -137,7 +140,7 @@ export default function Home() {
       oneTimePasscode: "TGS^$%ttUW",
     },
     {
-      key: 1,
+      key: 3,
       status: "Revoked",
       deviceType: "Apple iOS",
       deviceName: "spotlight-int-dev-01",
@@ -145,7 +148,7 @@ export default function Home() {
       oneTimePasscode: "TGS^$%ttUW",
     },
     {
-      key: 1,
+      key: 4,
       status: "Expired",
       deviceType: "Apple iOS",
       deviceName: "spotlight-int-dev-01",
@@ -153,7 +156,7 @@ export default function Home() {
       oneTimePasscode: "TGS^$%ttUW",
     },
     {
-      key: 1,
+      key: 5,
       status: "Pending",
       deviceType: "Apple iOS",
       deviceName: "spotlight-int-dev-01",
@@ -161,7 +164,7 @@ export default function Home() {
       oneTimePasscode: "TGS^$%ttUW",
     },
     {
-      key: 1,
+      key: 6,
       status: "Active",
       deviceType: "Apple iOS",
       deviceName: "spotlight-int-dev-01",
@@ -169,7 +172,7 @@ export default function Home() {
       oneTimePasscode: "TGS^$%ttUW",
     },
     {
-      key: 1,
+      key: 7,
       status: "Completed",
       deviceType: "Apple iOS",
       deviceName: "spotlight-int-dev-01",
@@ -177,7 +180,7 @@ export default function Home() {
       oneTimePasscode: "TGS^$%ttUW",
     },
     {
-      key: 1,
+      key: 8,
       status: "Completed",
       deviceType: "Apple iOS",
       deviceName: "spotlight-int-dev-01",
@@ -185,7 +188,7 @@ export default function Home() {
       oneTimePasscode: "TGS^$%ttUW",
     },
     {
-      key: 1,
+      key: 9,
       status: "Completed",
       deviceType: "Apple iOS",
       deviceName: "spotlight-int-dev-01",
@@ -206,7 +209,7 @@ export default function Home() {
   return (
     <Layout>
       <div>
-        {" "}
+        <CustomTab />
         <CustomTable
           columns={columns}
           dataSource={data}

@@ -85,7 +85,7 @@ export default function CustomTable({
       {pagination ? (
         <div className="my-3">
           <div
-            className=" justify-between items-center pagination-conatiner"
+            className="flex justify-between items-center pagination-conatiner bg-white"
             style={{
               height: 65,
               paddingRight: 16,
@@ -102,18 +102,9 @@ export default function CustomTable({
               className="text-sm font-medium text-gray"
             >
               Showing {(page - 1) * limit + 1} - {Math.min(page * limit, total)}{" "}
-              of {total} Results
+              of {total} entries
             </div>
-            <div
-              style={{
-                width: 52,
-                height: 6,
-                backgroundColor: Colors.gray,
-                borderRadius: 8,
-                opacity: 0.5,
-              }}
-              className="pagination-scroll"
-            ></div>
+
             <div className="flex items-center">
               <Pagination
                 current={page ?? 1}

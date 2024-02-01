@@ -14,15 +14,13 @@ import ListItemText from "@mui/material/ListItemText";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import MuiDrawer from "@mui/material/Drawer";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import Logout from "@mui/icons-material/Logout";
-
-import PersonIcon from "@mui/icons-material/Person";
-import { FaUsers } from "react-icons/fa";
+import { Select, Button, Avatar, Badge } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 import { MdPayment } from "react-icons/md";
+import { FaUserShield } from "react-icons/fa6";
 
 import { HiNewspaper, HiOfficeBuilding } from "react-icons/hi";
+import { IoIosNotifications } from "react-icons/io";
 
 import { RxDashboard } from "react-icons/rx";
 import {
@@ -36,34 +34,15 @@ import {
 } from "@mui/icons-material";
 import { Collapse } from "@mui/material";
 
-import {
-  MdOutlineKeyboardArrowDown,
-  MdOutlineKeyboardArrowUp,
-} from "react-icons/md";
 import { TbCircle } from "react-icons/tb";
-import Avatar from "@mui/material/Avatar";
 
 import { useMenuOpen } from "../context/menuOpenContext";
 
 const drawerWidth = 250;
 
-const create = [
-  {
-    title: "Invoice",
-    icon: <Article className="text-2xl" />,
-    link: "#",
-  },
-  {
-    title: "Receipt",
-    icon: <ReceiptLong className="text-2xl" />,
-    link: "#",
-  },
-  {
-    title: "Users",
-    icon: <FaUsers className="text-2xl" />,
-    link: "/master/user-master/add",
-  },
-];
+const handleChange = (value: string) => {
+  console.log(`selected ${value}`);
+};
 
 const data: any = [
   {
@@ -72,7 +51,7 @@ const data: any = [
     link: "/dashboard",
   },
   {
-    title: "Admin",
+    title: "Invoices",
     icon: <AdminPanelSettings className="text-2xl" />,
     options: [
       {
@@ -93,33 +72,23 @@ const data: any = [
     ],
   },
   {
-    title: "Rentals",
+    title: "Management",
     icon: <HiOfficeBuilding className="text-2xl" />,
     options: [
       {
-        title: "Tenants",
+        title: "Devices",
         icon: <TbCircle className="text-xs" />,
         link: "/master/tenant-master",
       },
       {
-        title: "Units",
+        title: "Users & Roles",
         icon: <TbCircle className="text-xs" />,
         link: "/master/units",
-      },
-      {
-        title: "Buildings",
-        icon: <TbCircle className="text-xs" />,
-        link: "/master/building-master",
-      },
-      {
-        title: "Building owners",
-        icon: <TbCircle className="text-xs" />,
-        link: "/master/building-owners",
       },
     ],
   },
   {
-    title: "Agreements",
+    title: "Billing",
     icon: <HiNewspaper className="text-2xl" />,
     options: [
       {
@@ -135,7 +104,7 @@ const data: any = [
     ],
   },
   {
-    title: "Finance",
+    title: "Tools",
     icon: <MdPayment className="text-2xl" />,
     options: [
       {
@@ -148,70 +117,9 @@ const data: any = [
         icon: <TbCircle className="text-xs" />,
         link: "/accounting/receipt",
       },
-      {
-        title: "Bill",
-        icon: <TbCircle className="text-xs" />,
-        link: "/accounting/bills",
-      },
-      {
-        title: "Payment",
-        icon: <TbCircle className="text-xs" />,
-        link: "/finance/payments",
-      },
-      {
-        title: "Outstanding Invoices",
-        icon: <TbCircle className="text-xs" />,
-        link: "/outstanding-invoices",
-      },
-      {
-        title: "PDC",
-        icon: <TbCircle className="text-xs" />,
-        link: "/finance/pdc",
-      },
     ],
   },
-  {
-    title: "Accounting",
-    icon: <AccountBalance className="text-2xl" />,
-    options: [
-      {
-        title: "Account Categories",
-        icon: <TbCircle className="text-xs" />,
-        link: "/banking/account-category",
-      },
-      {
-        title: "Chart of Accounts",
-        icon: <TbCircle className="text-xs" />,
-        link: "/banking/account",
-      },
-      {
-        title: "Accounts Tree",
-        icon: <TbCircle className="text-xs" />,
-        link: "/accounts-tree",
-      },
-      {
-        title: "Journal",
-        icon: <TbCircle className="text-xs" />,
-        link: "/accounting/journal",
-      },
 
-      // {
-      //   title: "Account Type Summary",
-      //   icon: <TbCircle className="text-xs" />,
-      //   link: "/reports/account-type-summary",
-      // },
-      {
-        title: "Account Summary",
-        icon: <TbCircle className="text-xs" />,
-        link: "/reports/account-summary",
-      },
-      {
-        title: "Account Statement",
-        icon: <TbCircle className="text-xs" />,
-        link: "/reports/account-statement",
-      },
-    ],
-  },
   {
     title: "Settings",
     icon: <Settings className="text-2xl" />,
@@ -274,7 +182,7 @@ function stringToColor(string: string) {
     hash = string.charCodeAt(i) + ((hash << 5) - hash);
   }
 
-  let color = "#";
+  let color = "#ECF9F9";
 
   for (i = 0; i < 3; i += 1) {
     const value = (hash >> (i * 8)) & 0xff;
@@ -327,20 +235,20 @@ export default function MiniDrawer({ children }: any) {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", color: "#ECF9F9" }}>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader className=" ">
           <div className="flex items-center">
             {open ? (
               <IconButton onClick={handleDrawerClose}>
-                <ChevronLeftIcon />
+                <ChevronLeftIcon className="text-black" />
               </IconButton>
             ) : (
               <IconButton
                 aria-label="open drawer"
                 onClick={handleDrawerOpen}
                 sx={{
-                  color: "white",
+                  color: "black",
                   ml: 4,
                   ...(open ? { display: "none" } : {}),
                 }}
@@ -353,7 +261,9 @@ export default function MiniDrawer({ children }: any) {
         {open ? (
           <div className="ml-4 mb-5">
             <div className="w-[100px] h-[16px] bg-primary "></div>
-            <p className="text-2xl font-bold text-slate-300">AL QANDEEL</p>
+            <p className="text-xl font-medium text-black">
+              GREEN <span className="font-bold">PEOPLE</span>
+            </p>
           </div>
         ) : null}
 
@@ -481,107 +391,61 @@ export default function MiniDrawer({ children }: any) {
           </button>
         )}
       </Drawer>
-      <div className="w-full bg-alabaster">
-        <div className="flex bg-alabaster ">
+      <div className="w-full ">
+        <div className="flex bg-[#FAFAFD] justify-between items-center mx-6">
           <div className="flex justify-between w-full bg-white py-[26px]">
             <div className="ml-6">
-              <div className="text-[#A0A9AF] font-medium text-xs">
-                Hii {user.username}
+              <div className="text-xl text-black font-semibold flex justify-center items-center gap-1">
+                <FaUserShield className="text-[#12B2B3] " /> Management -{" "}
+                <span className="text-[#12B2B3]">Device List</span>
               </div>
-              <div className="text-xl font-semibold">Welcome Back.</div>
             </div>
-            <div className="md:w-52 w-30 md:mr-10 py-2">
-              <div className="flex items-center md:gap-x-3 gap-x-1 justify-end">
-                <div className="w-10">
-                  <Avatar
-                    {...stringAvatar(user.username)}
-                    className="md:w-10 md:h-10 w-8 h-8 rounded-full"
-                  />
-                </div>
-                <div className="w-15">
-                  <p className="text-[#23395d] font-bold text-sm md:text-base capitalize">
-                    {user.username}
-                  </p>
-                  <p className="text-[#23395d] font-medium md:text-sm text-xs capitalize">
-                    {user.role}
-                  </p>
-                </div>
-                <button
-                  className="w-10"
-                  id="basic-button"
-                  aria-controls={openPop ? "basic-menu" : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={openPop ? "true" : undefined}
-                  onClick={handleClickPop}
-                >
-                  {openPop ? (
-                    <MdOutlineKeyboardArrowUp className="text-inherit md:w-[30px] md:h-[30px] w-[20px] h-[20px]" />
-                  ) : (
-                    <MdOutlineKeyboardArrowDown className="text-inherit md:w-[30px] md:h-[30px] w-[20px] h-[20px]" />
-                  )}
-                </button>
+            <div className="gap-6 flex justify-center items-center">
+              <div>
+                <Select
+                  size="large"
+                  defaultValue="english"
+                  style={{ width: 120 }}
+                  onChange={handleChange}
+                  options={[
+                    { value: "english", label: "English" },
+                    { value: "malayalam", label: "Malayalam" },
+                    { value: "hindi", label: "Hindi" },
+                    { value: "arabic", label: "Arabic" },
+                  ]}
+                />
               </div>
-              <Menu
-                anchorEl={anchorEl}
-                id="account-menu"
-                open={openPop}
-                onClose={handleClosePop}
-                onClick={handleClosePop}
-                PaperProps={{
-                  elevation: 0,
-                  sx: {
-                    overflow: "visible",
-                    filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                    mt: 1.5,
-                    "& .MuiAvatar-root": {
-                      width: 32,
-                      height: 32,
-                      ml: -0.5,
-                      mr: 1,
-                    },
-                    "&:before": {
-                      content: '""',
-                      display: "block",
-                      position: "absolute",
-                      top: 0,
-                      right: 14,
-                      width: 10,
-                      height: 10,
-                      bgcolor: "background.paper",
-                      transform: "translateY(-50%) rotate(45deg)",
-                      zIndex: 0,
-                    },
-                  },
-                }}
-                transformOrigin={{ horizontal: "right", vertical: "top" }}
-                anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-              >
-                <MenuItem
-                  onClick={() => {
-                    router.push("/my-profile");
-                  }}
-                >
-                  <ListItemIcon>
-                    <PersonIcon fontSize="small" />
-                  </ListItemIcon>
-                  My Profile
-                </MenuItem>
-                <MenuItem
-                  onClick={() => {
-                    handleClosePop();
-                    // handleLogout();
-                  }}
-                >
-                  <ListItemIcon>
-                    <Logout fontSize="small" />
-                  </ListItemIcon>
-                  Logout
-                </MenuItem>
-              </Menu>
+
+              <div>
+                <Badge count={23} color="#12B2B3">
+                  <Button size="large">
+                    <IoIosNotifications />
+                  </Button>
+                </Badge>
+              </div>
+
+              <div className="flex justify-center items-center">
+                <Badge dot className="">
+                  <Avatar size="large" shape="square" icon={<UserOutlined />} />
+                </Badge>
+                <Select
+                  className=""
+                  size="large"
+                  defaultValue="MKaravidas"
+                  style={{ width: 150 }}
+                  onChange={handleChange}
+                  options={[
+                    { value: "MKaravidas", label: "M Karavidas" },
+                    { value: "rahul", label: "Rahul" },
+                    { value: "aslam", label: "Aslam" },
+                    { value: "abhu", label: "Abhu" },
+                  ]}
+                />
+              </div>
             </div>
           </div>
         </div>
-        <div className="w-full min-h-screen bg-alabaster p-6 h-full">
+        <div className="w-full min-h-screen bg-[#FAFAFD] p-6 h-full">
           {children}
         </div>
       </div>
