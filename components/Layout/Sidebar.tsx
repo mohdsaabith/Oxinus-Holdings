@@ -18,7 +18,7 @@ import { Select, Button, Avatar, Badge } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { MdPayment } from "react-icons/md";
 import { FaUserShield } from "react-icons/fa6";
-
+import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { HiNewspaper, HiOfficeBuilding } from "react-icons/hi";
 import { IoIosNotifications } from "react-icons/io";
 
@@ -78,7 +78,7 @@ const data: any = [
       {
         title: "Devices",
         icon: <TbCircle className="text-xs" />,
-        link: "/master/tenant-master",
+        link: "/",
       },
       {
         title: "Users & Roles",
@@ -235,14 +235,19 @@ export default function MiniDrawer({ children }: any) {
   };
 
   return (
-    <Box sx={{ display: "flex", color: "#ECF9F9" }}>
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader className=" ">
-          <div className="flex items-center">
+    <Box sx={{ display: "flex", color: "#FAFAFD" }}>
+      <Drawer variant="permanent" open={open} className="p-[1rem]">
+        <DrawerHeader className={open ? `flex justify-start items-center` : ``}>
+          <div className=" ">
             {open ? (
-              <IconButton onClick={handleDrawerClose}>
-                <ChevronLeftIcon className="text-black" />
-              </IconButton>
+              <div className="flex justify-start items-center">
+                <IconButton onClick={handleDrawerClose}>
+                  <ChevronLeftIcon className="text-black" />
+                </IconButton>
+                <p className="text-xl font-medium text-black">
+                  GREEN <span className="font-bold">PEOPLE</span>
+                </p>
+              </div>
             ) : (
               <IconButton
                 aria-label="open drawer"
@@ -259,11 +264,13 @@ export default function MiniDrawer({ children }: any) {
           </div>
         </DrawerHeader>
         {open ? (
-          <div className="ml-4 mb-5">
-            <div className="w-[100px] h-[16px] bg-primary "></div>
-            <p className="text-xl font-medium text-black">
-              GREEN <span className="font-bold">PEOPLE</span>
-            </p>
+          <div className="mx-4 mb-5 ">
+            <div className="w-full h-[3.5rem] bg-white flex justify-between items-center px-[12px] ">
+              <div>
+                <span className="font-bold">TECH</span>LOGO
+              </div>
+              <MdOutlineArrowForwardIos className="" />
+            </div>
           </div>
         ) : null}
 
@@ -331,7 +338,7 @@ export default function MiniDrawer({ children }: any) {
                                   option.link === router.pathname ? true : false
                                 }
                               >
-                                <ListItemIcon>{option.icon}</ListItemIcon>
+                                {/* <ListItemIcon>{option.icon}</ListItemIcon> */}
                                 <ListItemText primary={option.title} />
                               </ListItemButton>
                             </List>
@@ -391,9 +398,9 @@ export default function MiniDrawer({ children }: any) {
           </button>
         )}
       </Drawer>
-      <div className="w-full ">
-        <div className="flex bg-[#FAFAFD] justify-between items-center mx-6">
-          <div className="flex justify-between w-full bg-white py-[26px]">
+      <div className="w-full bg-[#FAFAFD]">
+        <div className="flex  justify-between items-center mx-6">
+          <div className="flex justify-between bg-[#FAFAFD] w-full  pt-[26px]">
             <div className="ml-6">
               <div className="text-xl text-black font-semibold flex justify-center items-center gap-1">
                 <FaUserShield className="text-[#12B2B3] " /> Management -{" "}
@@ -418,7 +425,7 @@ export default function MiniDrawer({ children }: any) {
 
               <div>
                 <Badge count={23} color="#12B2B3">
-                  <Button size="large">
+                  <Button size="large" className="">
                     <IoIosNotifications />
                   </Button>
                 </Badge>

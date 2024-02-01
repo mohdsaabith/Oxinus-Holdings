@@ -77,8 +77,12 @@ export default function Home() {
           fontWeight: 500,
         };
         return (
-          <Tag style={tagStyle} key={status}>
-            &#8226; {status}
+          <Tag
+            style={tagStyle}
+            key={status}
+            className="w-[5rem] flex justify-center items-center"
+          >
+            {status}
           </Tag>
         );
       },

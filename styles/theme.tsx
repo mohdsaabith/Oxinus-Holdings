@@ -16,32 +16,32 @@ const muiTheme = {
           ".MuiPaper-root": {
             background: "#ECF9F9",
             borderColor: "#FFFFF",
-
             ".MuiListItemText-root": {
-              color: "#ECF9F9",
+              color: "#12112C",
               ".MuiTypography-root ": {
                 fontWeight: 400,
-                color: "#A0A9AF",
+                color: "#12112C",
               },
             },
 
             ".MuiListItemIcon-root, .MuiSvgIcon-root": {
-              color: "#A0A9AF",
+              color: "#12112C",
             },
             ".MuiListItemIcon-root": {
               minWidth: 20,
             },
             ".Mui-selected": {
-              backgroundColor: "#ECF9F9",
+              backgroundColor: "#12B2B3",
+              color: "#FFFFFF",
               marginLeft: 16,
               marginRight: 16,
               borderRadius: 4,
 
               ".MuiTypography-root": {
-                color: Colors.white,
+                color: "#FFFFFF",
               },
               ".MuiListItemIcon-root, .MuiSvgIcon-root": {
-                color: Colors.white,
+                color: "#FFFFFF",
               },
             },
           },
@@ -60,13 +60,13 @@ const muiTheme = {
           },
           ".Mui-selected": {
             ".MuiSvgIcon-root": {
-              color: Colors.primary,
+              color: "#FFFFFF",
             },
             ".MuiListItemText-root ": {
-              color: Colors.primary,
+              color: "#FFFFFF",
             },
             ".MuiTypography-root": {
-              color: Colors.primary,
+              color: "#FFFFFF",
             },
           },
         },
