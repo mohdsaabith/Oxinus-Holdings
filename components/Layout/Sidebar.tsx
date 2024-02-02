@@ -52,7 +52,7 @@ export default function MiniDrawer({ children }: any) {
               {open ? (
                 <div className="flex justify-start items-center">
                   <IconButton onClick={handleDrawerClose}>
-                    <ChevronLeftIcon className="text-black" />
+                    <MenuIcon className="text-black" />
                   </IconButton>
                   <p className="text-xl font-medium text-black">
                     GREEN <span className="font-bold">PEOPLE</span>
@@ -159,7 +159,6 @@ export default function MiniDrawer({ children }: any) {
                     <p className="text-base font-medium text-black">
                       Management
                     </p>
-                    {menuDrawerOpen ?? <div>helllo</div>}
                   </div>
                   {menuDrawerOpen ? (
                     <IoIosArrowDown />
