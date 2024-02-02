@@ -5,7 +5,6 @@ import { MdOutlineFileDownload } from "react-icons/md";
 import { LuPrinter } from "react-icons/lu";
 import { FaPlus } from "react-icons/fa6";
 import dayjs from "dayjs";
-
 export default function Index() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [datePickerValue, setDatePickerValue] =
@@ -33,9 +32,9 @@ export default function Index() {
 
   return (
     <div className="bg-white mb-5 rounded-[8px] p-5 shadow-md">
-      <div className="flex justify-between items-center">
-        <div className="flex justify-center items-center gap-3">
-          <div>
+      <div className="md:flex justify-between items-center">
+        <div className="md:flex justify-center items-center gap-3">
+          <div className="md:mb-0 sm:mb-2 mb-2">
             <Select
               size="large"
               placeholder="Device Type"
@@ -47,11 +46,12 @@ export default function Index() {
               ]}
             />
           </div>
-          <div>
+
+          <div className="md:mb-0 sm:mb-2 mb-2">
             <Input size="large" placeholder="Enter device name here" />
           </div>
 
-          <div>
+          <div className="md:mb-0 sm:mb-2 mb-2">
             <DatePicker
               onChange={onChange}
               size="large"
@@ -60,15 +60,15 @@ export default function Index() {
             />
           </div>
 
-          <div>
+          <div className="md:mb-0 sm:mb-2 mb-2">
             <Button size="large" className="text-black border border-black">
               Search
             </Button>
           </div>
         </div>
 
-        <div className="flex justify-center items-center gap-3">
-          <div>
+        <div className="md:flex justify-center items-center gap-3">
+          <div className="md:mb-0 sm:mb-2 mb-2">
             <Button
               size="large"
               className="text-[#0D8182] border border-[#0D8182] gap-1 flex justify-center items-center"
@@ -77,7 +77,8 @@ export default function Index() {
               Export
             </Button>
           </div>
-          <div>
+
+          <div className="md:mb-0 sm:mb-2 mb-2">
             <Button
               size="large"
               className="text-[#0D8182] border border-[#0D8182] gap-1 flex justify-center items-center"
@@ -85,7 +86,8 @@ export default function Index() {
               <LuPrinter /> Print
             </Button>
           </div>
-          <div>
+
+          <div className="md:mb-0 sm:mb-2 mb-2">
             <Button
               onClick={showModal}
               size="large"
