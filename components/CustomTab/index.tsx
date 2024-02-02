@@ -8,7 +8,8 @@ import dayjs from "dayjs";
 
 export default function Index() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [datePickerValue, setDatePickerValue] = React.useState<any>();
+  const [datePickerValue, setDatePickerValue] =
+    React.useState<DatePickerProps>();
 
   const showModal = () => {
     setIsModalOpen(true);
