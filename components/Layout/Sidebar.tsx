@@ -20,10 +20,12 @@ import { MdPayment } from "react-icons/md";
 import { FaUserShield } from "react-icons/fa6";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { HiNewspaper, HiOfficeBuilding } from "react-icons/hi";
-import { IoIosNotifications } from "react-icons/io";
+import { IoIosNotifications, IoIosArrowDown } from "react-icons/io";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { TbFileInvoice } from "react-icons/tb";
-
+import { GiShoppingBag } from "react-icons/gi";
+import { RiToolsFill } from "react-icons/ri";
+import { LuHelpingHand } from "react-icons/lu";
 import { RxDashboard } from "react-icons/rx";
 import {
   AccountBalance,
@@ -235,6 +237,8 @@ export default function MiniDrawer({ children }: any) {
   const { menuOpen, setMenuOpen } = useMenuOpen();
   const [open, setOpen] = React.useState(true);
 
+  const [menuDrawerOpen, setMenuDrawerOpen] = React.useState(false);
+
   const [hideMenu, setHideMenu] = React.useState(true);
   const [hideCreate, setHideCreate] = React.useState(true);
   const [user, setUser] = React.useState<any>({ username: "", role: "" });
@@ -321,16 +325,16 @@ export default function MiniDrawer({ children }: any) {
               : "m-3 bg-[#ECF9F9] h-full w-[5rem] rounded-[8px] pt-[1rem]"
           }
         >
-          <Menu
+          {/* <Menu
             onClick={onClick}
             style={{ width: 256 }}
             defaultSelectedKeys={["1"]}
             defaultOpenKeys={["sub1"]}
             mode="inline"
             items={items}
-          />
+          /> */}
 
-          {/* <div className="mx-3">
+          <div className="mx-3">
             {" "}
             <div className="text-black ">
               {open ? (
@@ -377,17 +381,25 @@ export default function MiniDrawer({ children }: any) {
                   <IconButton onClick={handleDrawerClose}>
                     <LuLayoutDashboard className="text-black" />
                   </IconButton>
-                  <p className="text-lg font-medium text-black">Dashboard</p>
+                  <p className="text-base font-medium text-black">Dashboard</p>
                 </div>
 
-                <div className="flex justify-between items-center pr-5 cursor-pointer hover:bg-slate-200 hover:rounded-[8px] hover:mx-[5px]">
+                <div
+                  className="flex justify-between items-center pr-5 cursor-pointer hover:bg-slate-200 hover:rounded-[8px] hover:mx-[5px]"
+                  onClick={() => setMenuDrawerOpen(!menuDrawerOpen)}
+                >
                   <div className="flex justify-center items-center">
                     <IconButton onClick={handleDrawerClose}>
                       <TbFileInvoice className="text-black" />
                     </IconButton>
-                    <p className="text-lg font-medium text-black">Invoices</p>
+                    <p className="text-base font-medium text-black">Invoices</p>
+                    {menuDrawerOpen ?? <div>helllo</div>}
                   </div>
-                  <MdOutlineArrowForwardIos className="" />
+                  {menuDrawerOpen ? (
+                    <IoIosArrowDown />
+                  ) : (
+                    <MdOutlineArrowForwardIos className="" />
+                  )}
                 </div>
               </div>
             ) : (
@@ -419,7 +431,138 @@ export default function MiniDrawer({ children }: any) {
             )}
           </div>
 
-          <div className="border border-3 border-white my-5"></div> */}
+          <div className="border border-3 border-white my-5"></div>
+
+          <div>
+            {open ? (
+              <div>
+                <div
+                  className="flex justify-between items-center pr-5 cursor-pointer hover:bg-slate-200 hover:rounded-[8px] hover:mx-[5px]"
+                  onClick={() => setMenuDrawerOpen(!menuDrawerOpen)}
+                >
+                  <div className="flex justify-center items-center">
+                    <IconButton onClick={handleDrawerClose}>
+                      <FaUserShield className="text-black" />
+                    </IconButton>
+                    <p className="text-base font-medium text-black">
+                      Management
+                    </p>
+                    {menuDrawerOpen ?? <div>helllo</div>}
+                  </div>
+                  {menuDrawerOpen ? (
+                    <IoIosArrowDown />
+                  ) : (
+                    <MdOutlineArrowForwardIos className="" />
+                  )}
+                </div>
+
+                <div
+                  className="flex justify-between items-center pr-5 cursor-pointer hover:bg-slate-200 hover:rounded-[8px] hover:mx-[5px]"
+                  onClick={() => setMenuDrawerOpen(!menuDrawerOpen)}
+                >
+                  <div className="flex justify-center items-center">
+                    <IconButton onClick={handleDrawerClose}>
+                      <GiShoppingBag className="text-black" />
+                    </IconButton>
+                    <p className="text-base font-medium text-black">Billing</p>
+                    {menuDrawerOpen ?? <div>helllo</div>}
+                  </div>
+                  {menuDrawerOpen ? (
+                    <IoIosArrowDown />
+                  ) : (
+                    <MdOutlineArrowForwardIos className="" />
+                  )}
+                </div>
+
+                <div
+                  className="flex justify-between items-center pr-5 cursor-pointer hover:bg-slate-200 hover:rounded-[8px] hover:mx-[5px]"
+                  onClick={() => setMenuDrawerOpen(!menuDrawerOpen)}
+                >
+                  <div className="flex justify-center items-center">
+                    <IconButton onClick={handleDrawerClose}>
+                      <RiToolsFill className="text-black" />
+                    </IconButton>
+                    <p className="text-base font-medium text-black">Tools</p>
+                    {menuDrawerOpen ?? <div>helllo</div>}
+                  </div>
+                  {menuDrawerOpen ? (
+                    <IoIosArrowDown />
+                  ) : (
+                    <MdOutlineArrowForwardIos className="" />
+                  )}
+                </div>
+              </div>
+            ) : (
+              <div>
+                <IconButton
+                  aria-label="open drawer"
+                  onClick={handleDrawerOpen}
+                  sx={{
+                    color: "black",
+                    ml: 2,
+                    ...(open ? { display: "none" } : {}),
+                  }}
+                >
+                  <FaUserShield />
+                </IconButton>
+
+                <IconButton
+                  aria-label="open drawer"
+                  onClick={handleDrawerOpen}
+                  sx={{
+                    color: "black",
+                    ml: 2,
+                    ...(open ? { display: "none" } : {}),
+                  }}
+                >
+                  <GiShoppingBag />
+                </IconButton>
+
+                <IconButton
+                  aria-label="open drawer"
+                  onClick={handleDrawerOpen}
+                  sx={{
+                    color: "black",
+                    ml: 2,
+                    ...(open ? { display: "none" } : {}),
+                  }}
+                >
+                  <RiToolsFill />
+                </IconButton>
+              </div>
+            )}
+          </div>
+
+          <div className="border border-3 border-white my-5"></div>
+
+          <div>
+            {open ? (
+              <div>
+                <div className="flex justify-start items-center cursor-pointer hover:bg-slate-200 hover:rounded-[8px] hover:mx-[5px]">
+                  <IconButton onClick={handleDrawerClose}>
+                    <LuHelpingHand className="text-black" />
+                  </IconButton>
+                  <p className="text-base font-medium text-black">
+                    Help Center
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <IconButton
+                  aria-label="open drawer"
+                  onClick={handleDrawerOpen}
+                  sx={{
+                    color: "black",
+                    ml: 2,
+                    ...(open ? { display: "none" } : {}),
+                  }}
+                >
+                  <LuHelpingHand />
+                </IconButton>
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <div className="w-full bg-[#FAFAFD]">
@@ -449,7 +592,7 @@ export default function MiniDrawer({ children }: any) {
 
               <div>
                 <Badge count={23} color="#12B2B3">
-                  <Button size="large" className="">
+                  <Button size="large" className="bg-white">
                     <IoIosNotifications />
                   </Button>
                 </Badge>
