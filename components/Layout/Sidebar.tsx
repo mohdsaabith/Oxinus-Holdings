@@ -21,6 +21,8 @@ import { FaUserShield } from "react-icons/fa6";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { HiNewspaper, HiOfficeBuilding } from "react-icons/hi";
 import { IoIosNotifications } from "react-icons/io";
+import { LuLayoutDashboard } from "react-icons/lu";
+import { TbFileInvoice } from "react-icons/tb";
 
 import { RxDashboard } from "react-icons/rx";
 import {
@@ -235,169 +237,107 @@ export default function MiniDrawer({ children }: any) {
   };
 
   return (
-    <Box sx={{ display: "flex", color: "#FAFAFD" }}>
-      <Drawer variant="permanent" open={open} className="p-[1rem]">
-        <DrawerHeader className={open ? `flex justify-start items-center` : ``}>
-          <div className=" ">
-            {open ? (
-              <div className="flex justify-start items-center">
-                <IconButton onClick={handleDrawerClose}>
-                  <ChevronLeftIcon className="text-black" />
+    <Box sx={{ display: "flex" }}>
+      <div className="bg-[#FAFAFD]">
+        <div
+          className={
+            open
+              ? "m-3 bg-[#ECF9F9] h-full w-[15rem] rounded-[8px] pt-[1rem]"
+              : "m-3 bg-[#ECF9F9] h-full w-[5rem] rounded-[8px] pt-[1rem]"
+          }
+        >
+          <div className="mx-3">
+            {" "}
+            <div className="text-black ">
+              {open ? (
+                <div className="flex justify-start items-center">
+                  <IconButton onClick={handleDrawerClose}>
+                    <ChevronLeftIcon className="text-black" />
+                  </IconButton>
+                  <p className="text-xl font-medium text-black">
+                    GREEN <span className="font-bold">PEOPLE</span>
+                  </p>
+                </div>
+              ) : (
+                <IconButton
+                  aria-label="open drawer"
+                  onClick={handleDrawerOpen}
+                  sx={{
+                    color: "black",
+                    ml: 1,
+                    ...(open ? { display: "none" } : {}),
+                  }}
+                >
+                  <MenuIcon />
                 </IconButton>
-                <p className="text-xl font-medium text-black">
-                  GREEN <span className="font-bold">PEOPLE</span>
-                </p>
-              </div>
-            ) : (
-              <IconButton
-                aria-label="open drawer"
-                onClick={handleDrawerOpen}
-                sx={{
-                  color: "black",
-                  ml: 4,
-                  ...(open ? { display: "none" } : {}),
-                }}
-              >
-                <MenuIcon />
-              </IconButton>
-            )}
-          </div>
-        </DrawerHeader>
-        {open ? (
-          <div className="mx-4 mb-5 ">
-            <div className="w-full h-[3.5rem] bg-white flex justify-between items-center px-[12px] ">
-              <div>
-                <span className="font-bold">TECH</span>LOGO
-              </div>
-              <MdOutlineArrowForwardIos className="" />
+              )}
+              {open ? (
+                <div className="mx-1 mt-[2rem] mb-5 ">
+                  <div className="w-full h-[3.5rem] bg-white flex justify-between items-center px-[8px] rounded-[8px]">
+                    <div>
+                      <span className="font-bold">TECH</span>LOGO
+                    </div>
+                    <MdOutlineArrowForwardIos className="" />
+                  </div>
+                </div>
+              ) : null}
             </div>
           </div>
-        ) : null}
 
-        <List>
-          {data &&
-            data.length >= 0 &&
-            data?.map((item: any, index: number) =>
-              !hideMenu || index < 9 ? (
-                <div key={item.title}>
-                  {item?.options?.length && item?.options?.length > 0 ? (
-                    <ListItem disablePadding sx={{ display: "block" }}>
-                      <ListItemButton
-                        onClick={() => {
-                          setOpen(true);
-                          setMenuOpen({
-                            ...menuOpen,
-                            [index]: menuOpen ? !menuOpen[index] : true,
-                          });
-                        }}
-                        sx={{
-                          minHeight: 48,
-                          justifyContent: open ? "initial" : "center",
-                          px: 2.5,
-                        }}
-                        selected={item.link === router.pathname ? true : false}
-                      >
-                        <ListItemIcon
-                          sx={{
-                            minWidth: 0,
-                            mr: open ? 3 : "auto",
-                            justifyContent: "center",
-                          }}
-                          className="flex items-start "
-                        >
-                          {item.icon}
-                        </ListItemIcon>
+          <div className="border border-3 border-white mb-5"></div>
 
-                        <ListItemText
-                          primary={item.title}
-                          sx={{
-                            opacity: open ? 1 : 0,
-                          }}
-                        />
-                        {menuOpen && menuOpen[index] ? (
-                          <>
-                            {open && <ExpandLess sx={{ display: "hidden" }} />}
-                          </>
-                        ) : (
-                          <>
-                            {open && <ExpandMore sx={{ display: "hidden" }} />}
-                          </>
-                        )}
-                      </ListItemButton>
-                      <Collapse
-                        in={menuOpen && menuOpen[index]}
-                        timeout="auto"
-                        unmountOnExit
-                      >
-                        {item.options?.map((option: any, i: number) => (
-                          <Link href={option.link} key={i}>
-                            <List component="div" disablePadding>
-                              <ListItemButton
-                                sx={{ pl: open ? 4 : 1 }}
-                                selected={
-                                  option.link === router.pathname ? true : false
-                                }
-                              >
-                                {/* <ListItemIcon>{option.icon}</ListItemIcon> */}
-                                <ListItemText primary={option.title} />
-                              </ListItemButton>
-                            </List>
-                          </Link>
-                        ))}
-                      </Collapse>
-                    </ListItem>
-                  ) : (
-                    <Link href={item.link ?? "#"}>
-                      <ListItem disablePadding sx={{ display: "block" }}>
-                        <ListItemButton
-                          sx={{
-                            minHeight: 48,
-                            justifyContent: open ? "initial" : "center",
-                            px: 2.5,
-                          }}
-                          selected={
-                            item.link === router.pathname ? true : false
-                          }
-                        >
-                          <ListItemIcon
-                            sx={{
-                              minWidth: 0,
-                              mr: open ? 3 : "auto",
-                              justifyContent: "center",
-                            }}
-                            className="flex items-start"
-                          >
-                            {item.icon}
-                          </ListItemIcon>
-
-                          <ListItemText
-                            primary={item.title}
-                            sx={{ opacity: open ? 1 : 0 }}
-                          />
-                        </ListItemButton>
-                      </ListItem>
-                    </Link>
-                  )}
+          <div>
+            {open ? (
+              <div>
+                <div className="flex justify-start items-center cursor-pointer hover:bg-slate-200 hover:rounded-[8px] hover:mx-[5px]">
+                  <IconButton onClick={handleDrawerClose}>
+                    <LuLayoutDashboard className="text-black" />
+                  </IconButton>
+                  <p className="text-lg font-medium text-black">Dashboard</p>
                 </div>
-              ) : null
+
+                <div className="flex justify-between items-center pr-5 cursor-pointer hover:bg-slate-200 hover:rounded-[8px] hover:mx-[5px]">
+                  <div className="flex justify-center items-center">
+                    <IconButton onClick={handleDrawerClose}>
+                      <TbFileInvoice className="text-black" />
+                    </IconButton>
+                    <p className="text-lg font-medium text-black">Invoices</p>
+                  </div>
+                  <MdOutlineArrowForwardIos className="" />
+                </div>
+              </div>
+            ) : (
+              <div>
+                <IconButton
+                  aria-label="open drawer"
+                  onClick={handleDrawerOpen}
+                  sx={{
+                    color: "black",
+                    ml: 2,
+                    ...(open ? { display: "none" } : {}),
+                  }}
+                >
+                  <LuLayoutDashboard />
+                </IconButton>
+
+                <IconButton
+                  aria-label="open drawer"
+                  onClick={handleDrawerOpen}
+                  sx={{
+                    color: "black",
+                    ml: 2,
+                    ...(open ? { display: "none" } : {}),
+                  }}
+                >
+                  <TbFileInvoice />
+                </IconButton>
+              </div>
             )}
-        </List>
-        {data.length > 9 && (
-          <button
-            onClick={() => {
-              setHideMenu(!hideMenu);
-              setOpen(true);
-            }}
-          >
-            <p className="flex items-center py-3 px-6 gap-6  text-white">
-              {!open && hideMenu && <ExpandMore />}
-              {!open && !hideMenu && <ExpandLess />}
-              {open && hideMenu ? "Show more" : "Show more"}
-              {open && !hideMenu ? <ExpandLess /> : <ExpandMore />}
-            </p>
-          </button>
-        )}
-      </Drawer>
+          </div>
+
+          <div className="border border-3 border-white my-5"></div>
+        </div>
+      </div>
       <div className="w-full bg-[#FAFAFD]">
         <div className="flex  justify-between items-center mx-6">
           <div className="flex justify-between bg-[#FAFAFD] w-full  pt-[26px]">
@@ -459,3 +399,160 @@ export default function MiniDrawer({ children }: any) {
     </Box>
   );
 }
+
+//  <Drawer variant="permanent" open={open} className="p-[1rem]">
+//    <DrawerHeader className={open ? `flex justify-start items-center` : ``}>
+//      <div className=" ">
+//        {open ? (
+//          <div className="flex justify-start items-center">
+//            <IconButton onClick={handleDrawerClose}>
+//              <ChevronLeftIcon className="text-black" />
+//            </IconButton>
+//            <p className="text-xl font-medium text-black">
+//              GREEN <span className="font-bold">PEOPLE</span>
+//            </p>
+//          </div>
+//        ) : (
+//          <IconButton
+//            aria-label="open drawer"
+//            onClick={handleDrawerOpen}
+//            sx={{
+//              color: "black",
+//              ml: 4,
+//              ...(open ? { display: "none" } : {}),
+//            }}
+//          >
+//            <MenuIcon />
+//          </IconButton>
+//        )}
+//      </div>
+//    </DrawerHeader>
+//    {open ? (
+//      <div className="mx-4 mb-5 ">
+//        <div className="w-full h-[3.5rem] bg-white flex justify-between items-center px-[12px] ">
+//          <div>
+//            <span className="font-bold">TECH</span>LOGO
+//          </div>
+//          <MdOutlineArrowForwardIos className="" />
+//        </div>
+//      </div>
+//    ) : null}
+
+//    <List>
+//      {data &&
+//        data.length >= 0 &&
+//        data?.map((item: any, index: number) =>
+//          !hideMenu || index < 9 ? (
+//            <div key={item.title}>
+//              {item?.options?.length && item?.options?.length > 0 ? (
+//                <ListItem disablePadding sx={{ display: "block" }}>
+//                  <ListItemButton
+//                    onClick={() => {
+//                      setOpen(true);
+//                      setMenuOpen({
+//                        ...menuOpen,
+//                        [index]: menuOpen ? !menuOpen[index] : true,
+//                      });
+//                    }}
+//                    sx={{
+//                      minHeight: 48,
+//                      justifyContent: open ? "initial" : "center",
+//                      px: 2.5,
+//                    }}
+//                    selected={item.link === router.pathname ? true : false}
+//                  >
+//                    <ListItemIcon
+//                      sx={{
+//                        minWidth: 0,
+//                        mr: open ? 3 : "auto",
+//                        justifyContent: "center",
+//                      }}
+//                      className="flex items-start "
+//                    >
+//                      {item.icon}
+//                    </ListItemIcon>
+
+//                    <ListItemText
+//                      primary={item.title}
+//                      sx={{
+//                        opacity: open ? 1 : 0,
+//                      }}
+//                    />
+//                    {menuOpen && menuOpen[index] ? (
+//                      <>{open && <ExpandLess sx={{ display: "hidden" }} />}</>
+//                    ) : (
+//                      <>{open && <ExpandMore sx={{ display: "hidden" }} />}</>
+//                    )}
+//                  </ListItemButton>
+//                  <Collapse
+//                    in={menuOpen && menuOpen[index]}
+//                    timeout="auto"
+//                    unmountOnExit
+//                  >
+//                    {item.options?.map((option: any, i: number) => (
+//                      <Link href={option.link} key={i}>
+//                        <List component="div" disablePadding>
+//                          <ListItemButton
+//                            sx={{ pl: open ? 4 : 1 }}
+//                            selected={
+//                              option.link === router.pathname ? true : false
+//                            }
+//                          >
+//                            {/* <ListItemIcon>{option.icon}</ListItemIcon> */}
+//                            <ListItemText primary={option.title} />
+//                          </ListItemButton>
+//                        </List>
+//                      </Link>
+//                    ))}
+//                  </Collapse>
+//                </ListItem>
+//              ) : (
+//                <Link href={item.link ?? "#"}>
+//                  <ListItem disablePadding sx={{ display: "block" }}>
+//                    <ListItemButton
+//                      sx={{
+//                        minHeight: 48,
+//                        justifyContent: open ? "initial" : "center",
+//                        px: 2.5,
+//                      }}
+//                      selected={item.link === router.pathname ? true : false}
+//                    >
+//                      <ListItemIcon
+//                        sx={{
+//                          minWidth: 0,
+//                          mr: open ? 3 : "auto",
+//                          justifyContent: "center",
+//                        }}
+//                        className="flex items-start"
+//                      >
+//                        {item.icon}
+//                      </ListItemIcon>
+
+//                      <ListItemText
+//                        primary={item.title}
+//                        sx={{ opacity: open ? 1 : 0 }}
+//                      />
+//                    </ListItemButton>
+//                  </ListItem>
+//                </Link>
+//              )}
+//            </div>
+//          ) : null
+//        )}
+//    </List>
+//    {data.length > 9 && (
+//      <button
+//        onClick={() => {
+//          setHideMenu(!hideMenu);
+//          setOpen(true);
+//        }}
+//      >
+//        <p className="flex items-center py-3 px-6 gap-6  text-white">
+//          {!open && hideMenu && <ExpandMore />}
+//          {!open && !hideMenu && <ExpandLess />}
+//          {open && hideMenu ? "Show more" : "Show more"}
+//          {open && !hideMenu ? <ExpandLess /> : <ExpandMore />}
+//        </p>
+//      </button>
+//    )}
+//  </Drawer>;
