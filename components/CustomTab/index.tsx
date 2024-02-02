@@ -53,9 +53,9 @@ export default function Index() {
 
           <div className="md:mb-0 sm:mb-2 mb-2">
             <DatePicker
-              onChange={onChange}
+              // onChange={onChange}
               size="large"
-              value={dayjs(datePickerValue as any)}
+              // value={dayjs(datePickerValue as any)}
             />
           </div>
 
