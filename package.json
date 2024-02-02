@@ -8,14 +8,13 @@
     "start": "next start",
     "lint": "next lint"
   },
-   "engines": {
+  "engines": {
     "node": "<=18.14.1",
     "yarn": ">=1.22.0",
     "npm": "please-use-yarn"
   },
- 
   "dependencies": {
-     "@emotion/react": "^11.10.6",
+    "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.9",
     "@mui/material": "^5.11.10",
@@ -31,7 +30,7 @@
     "antd": "^5.4.2",
     "axios": "^1.3.3",
     "cookies-next": "^2.1.1",
-    "dayjs": "^1.11.7",
+    "dayjs": "^1.11.10",
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
     "formik": "^2.2.9",

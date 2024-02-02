@@ -4,9 +4,11 @@ import type { DatePickerProps } from "antd";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { LuPrinter } from "react-icons/lu";
 import { FaPlus } from "react-icons/fa6";
+import dayjs from "dayjs";
 
 export default function Index() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [datePickerValue, setDatePickerValue] = React.useState<any>();
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -49,7 +51,12 @@ export default function Index() {
           </div>
 
           <div>
-            <DatePicker onChange={onChange} size="large" />
+            <DatePicker
+              onChange={onChange}
+              size="large"
+              value={dayjs(datePickerValue)}
+              onSelect={(value) => setDatePickerValue(value)}
+            />
           </div>
 
           <div>

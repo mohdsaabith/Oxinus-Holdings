@@ -46,88 +46,88 @@ const handleChange = (value: string) => {
   console.log(`selected ${value}`);
 };
 
-const data: any = [
-  {
-    title: "Dashboard",
-    icon: <RxDashboard className="text-2xl" />,
-    link: "/dashboard",
-  },
-  {
-    title: "Invoices",
-    icon: <AdminPanelSettings className="text-2xl" />,
-    options: [
-      {
-        title: "Users",
-        icon: <TbCircle className="text-xs" />,
-        link: "/master/user-master",
-      },
-      {
-        title: "Agents",
-        icon: <TbCircle className="text-xs" />,
-        link: "/agents",
-      },
-      {
-        title: "Vendors",
-        icon: <TbCircle className="text-xs" />,
-        link: "/vendors",
-      },
-    ],
-  },
-  {
-    title: "Management",
-    icon: <HiOfficeBuilding className="text-2xl" />,
-    options: [
-      {
-        title: "Devices",
-        icon: <TbCircle className="text-xs" />,
-        link: "/",
-      },
-      {
-        title: "Users & Roles",
-        icon: <TbCircle className="text-xs" />,
-        link: "/master/units",
-      },
-    ],
-  },
-  {
-    title: "Billing",
-    icon: <HiNewspaper className="text-2xl" />,
-    options: [
-      {
-        title: "Listing",
-        icon: <TbCircle className="text-xs" />,
-        link: "/rental/rental-agreement",
-      },
-      {
-        title: "Create",
-        icon: <TbCircle className="text-xs" />,
-        link: "/rental/rental-agreement/add",
-      },
-    ],
-  },
-  {
-    title: "Tools",
-    icon: <MdPayment className="text-2xl" />,
-    options: [
-      {
-        title: "Invoice",
-        icon: <TbCircle className="text-xs" />,
-        link: "/accounting/invoice",
-      },
-      {
-        title: "Receipt",
-        icon: <TbCircle className="text-xs" />,
-        link: "/accounting/receipt",
-      },
-    ],
-  },
+// const data: any = [
+//   {
+//     title: "Dashboard",
+//     icon: <RxDashboard className="text-2xl" />,
+//     link: "/dashboard",
+//   },
+//   {
+//     title: "Invoices",
+//     icon: <AdminPanelSettings className="text-2xl" />,
+//     options: [
+//       {
+//         title: "Users",
+//         icon: <TbCircle className="text-xs" />,
+//         link: "/master/user-master",
+//       },
+//       {
+//         title: "Agents",
+//         icon: <TbCircle className="text-xs" />,
+//         link: "/agents",
+//       },
+//       {
+//         title: "Vendors",
+//         icon: <TbCircle className="text-xs" />,
+//         link: "/vendors",
+//       },
+//     ],
+//   },
+//   {
+//     title: "Management",
+//     icon: <HiOfficeBuilding className="text-2xl" />,
+//     options: [
+//       {
+//         title: "Devices",
+//         icon: <TbCircle className="text-xs" />,
+//         link: "/",
+//       },
+//       {
+//         title: "Users & Roles",
+//         icon: <TbCircle className="text-xs" />,
+//         link: "/master/units",
+//       },
+//     ],
+//   },
+//   {
+//     title: "Billing",
+//     icon: <HiNewspaper className="text-2xl" />,
+//     options: [
+//       {
+//         title: "Listing",
+//         icon: <TbCircle className="text-xs" />,
+//         link: "/rental/rental-agreement",
+//       },
+//       {
+//         title: "Create",
+//         icon: <TbCircle className="text-xs" />,
+//         link: "/rental/rental-agreement/add",
+//       },
+//     ],
+//   },
+//   {
+//     title: "Tools",
+//     icon: <MdPayment className="text-2xl" />,
+//     options: [
+//       {
+//         title: "Invoice",
+//         icon: <TbCircle className="text-xs" />,
+//         link: "/accounting/invoice",
+//       },
+//       {
+//         title: "Receipt",
+//         icon: <TbCircle className="text-xs" />,
+//         link: "/accounting/receipt",
+//       },
+//     ],
+//   },
 
-  {
-    title: "Settings",
-    icon: <Settings className="text-2xl" />,
-    link: "/settings",
-  },
-];
+//   {
+//     title: "Settings",
+//     icon: <Settings className="text-2xl" />,
+//     link: "/settings",
+//   },
+// ];
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
