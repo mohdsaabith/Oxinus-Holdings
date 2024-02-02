@@ -26,8 +26,8 @@ export default function Index() {
     console.log(`selected ${value}`);
   };
 
-  const onChange: DatePickerProps["onChange"] = (date, dateString) => {
-    console.log(date, dateString);
+  const onChange: DatePickerProps["onChange"] = ({ date, dateString }: any) => {
+    setDatePickerValue(dateString);
   };
 
   return (
@@ -55,8 +55,7 @@ export default function Index() {
             <DatePicker
               onChange={onChange}
               size="large"
-              value={dayjs(datePickerValue)}
-              onSelect={(value) => setDatePickerValue(value)}
+              value={dayjs(datePickerValue as any)}
             />
           </div>
 
